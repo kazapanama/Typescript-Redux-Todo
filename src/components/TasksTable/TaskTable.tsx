@@ -21,7 +21,7 @@ const TodoTable:FC<TasksTableProps> = ({title,type}) =>{
     return(
         <section>
             <TableHeader title={title}/>
-            {type === 'active' ? activeTasks.map(item => <TableItem item={item} />) : archiveTasks.map(item => <TableItem item={item} />)}
+            {type === 'active' ? activeTasks.map(item => <TableItem item={item} key={item.id}/>) : archiveTasks.map(item => <TableItem item={item} key={item.id}/>)}
             
             
             

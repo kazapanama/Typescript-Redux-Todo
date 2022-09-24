@@ -27,3 +27,10 @@ export const removeTask = (id: number) => {
     dispatch({ type: ActionTypes.remove_todo, payload: id });
   };
 };
+
+export const editTask = (task: Todo) => {
+  return (dispatch: Dispatch) => {
+    dispatch({ type: ActionTypes.edit_todo, payload: task });
+  };
+};
+

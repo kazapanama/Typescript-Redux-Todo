@@ -27,7 +27,7 @@ export const todoReducer = (
       return { ...state, todos:[...state.todos].filter(task=>task.id !== action.payload)};
 
     case "EDIT_TODO":
-      return { ...state };
+      return { ...state,todos:[...state.todos].map(task=>task.id === action.payload.id ? action.payload : task) };
 
     default:
       return { ...state };
