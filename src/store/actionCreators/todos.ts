@@ -1,4 +1,4 @@
-import { ActionTypes, ActionType } from "../../types/todo";
+import { ActionTypes, ActionType, Todo } from "../../types/todo";
 import { Dispatch } from "redux";
 
 export const fetchTodos = () => {
@@ -13,5 +13,17 @@ export const fetchTodos = () => {
     } catch (e) {
       dispatch({ type: ActionTypes.fetch_todo_error, payload: "ERROR" });
     }
+  };
+};
+
+export const addTask = (task: Todo) => {
+  return (dispatch: Dispatch) => {
+    dispatch({ type: ActionTypes.add_todo, payload: task });
+  };
+};
+
+export const removeTask = (id: number) => {
+  return (dispatch: Dispatch) => {
+    dispatch({ type: ActionTypes.remove_todo, payload: id });
   };
 };

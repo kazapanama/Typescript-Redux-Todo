@@ -1,12 +1,26 @@
-@import './styles/variables';
+@import './variables';
+
+*{
+  margin:0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+
 
 body {
-  margin: 0;
+  
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background-color: $primary;
+  width:100vw;
+  padding-top: 50px;
+    .App{
+      margin:0 auto;
+      max-width: 1200px;
+    }
 }
 

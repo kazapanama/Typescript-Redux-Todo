@@ -21,10 +21,10 @@ export const todoReducer = (
       return { todos: [], loading: false, error: action.payload };
 
     case "ADD_TODO":
-      return { ...state };
+      return { ...state, todos:[...state.todos,action.payload] };
 
     case "REMOVE_TODO":
-      return { ...state };
+      return { ...state, todos:[...state.todos].filter(task=>task.id !== action.payload)};
 
     case "EDIT_TODO":
       return { ...state };

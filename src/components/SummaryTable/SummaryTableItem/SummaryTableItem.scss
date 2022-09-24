@@ -1,0 +1,19 @@
+@import '../../../styles/variables';
+
+.summary-item{
+    width:100%;
+    background-color: $white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding:10px;
+    div{
+        display: flex;
+        justify-content: space-between;
+        width:110px;
+        border:1px solid $black;
+
+        
+        margin-right: 30px;
+    }
+}

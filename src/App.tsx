@@ -1,13 +1,13 @@
 import { useEffect } from "react";
-import { TodoReducerState } from "./types/todo";
-import TodoTable from "./components/TodoTable";
 
-import { useTypedSelector } from "./hooks/useTypedSelector";
+import TodoTable from "./components/TasksTable/TaskTable";
+
 import { useAction } from "./hooks/useAction";
 
+import SummaryTable from "./components/SummaryTable/SummaryTable";
+
 function App() {
-  const todos = useTypedSelector((state: TodoReducerState) => state.todos);
-  const abs = todos.filter((item) => item.id === 1);
+
   const { fetchTodos } = useAction();
 
   useEffect(() => {
@@ -17,9 +17,11 @@ function App() {
   return (
     <>
       <div className="App">
-        <TodoTable />
+        <TodoTable title='Active tasks' type='active'/>
+        <SummaryTable />
+        <TodoTable title='Archived tasks' type='archive'/>
 
-        {abs.map((item) => item.name)}
+        
       </div>
     </>
   );
