@@ -1,6 +1,6 @@
 import "./NewTaskButton.scss";
 import { useState } from "react";
-import Form from "../Form/Form";
+import ModalForm from "../ModalForm/ModalForm";
 
 const NewTaskButton = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -15,7 +15,7 @@ const NewTaskButton = () => {
       <button className="add-task" onClick={() => openModal()}>
         + Add new Task
       </button>
-      {isOpen ? <Form setIsOpen={setIsOpen} type="add" /> : ""}
+      {isOpen ? <ModalForm setIsOpen={setIsOpen} type="add" /> : ""}
     </>
   );
 };

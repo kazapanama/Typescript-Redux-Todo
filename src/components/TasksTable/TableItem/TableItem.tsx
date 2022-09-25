@@ -3,7 +3,7 @@ import { Task } from "../../../types/task";
 import { FC, useState } from "react";
 import { parseDates, formatCategory } from "../../../utils/utils";
 import { useAction } from "../../../hooks/useAction";
-import Form from "../../Form/Form";
+import ModalForm from "../../ModalForm/ModalForm";
 
 interface TodoProps {
   item: Task;
@@ -36,24 +36,28 @@ const TableItem: FC<TodoProps> = ({ item }) => {
             onClick={() => openModal()}
             className="item-btn"
             src="./img/edit.svg"
-            alt='edit icon'
+            alt="edit icon"
           />
           <img
             onClick={() => changeStatus(item)}
             className="item-btn"
             src={item.isArchive ? "./img/restore.svg" : "./img/archive.svg"}
-            alt='archive icon'
+            alt="archive icon"
           />
           <img
             onClick={() => removeTask(item.id)}
             className="item-btn"
             src="./img/delete.svg"
-            alt='delete icon'
+            alt="delete icon"
           />
         </div>
       </div>
 
-      {isOpen ? <Form setIsOpen={setIsOpen} item={item} type="edit" /> : ""}
+      {isOpen ? (
+        <ModalForm setIsOpen={setIsOpen} item={item} type="edit" />
+      ) : (
+        ""
+      )}
     </>
   );
 };

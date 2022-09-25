@@ -2,7 +2,7 @@ import { FC, useState } from "react";
 import { useAction } from "../../hooks/useAction";
 import { Task } from "../../types/task";
 import { getDate } from "../../utils/utils";
-import "./Form.scss";
+import "./ModalForm.scss";
 
 interface FormProps {
   setIsOpen: React.Dispatch<React.SetStateAction<boolean>>;

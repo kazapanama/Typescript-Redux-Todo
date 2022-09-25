@@ -4,32 +4,32 @@ import { Dispatch } from "redux";
 export const fetchTasks = () => {
   return async (dispatch: Dispatch<ActionType>) => {
     try {
-      dispatch({ type: ActionTypes.fetch_tasks });
+      dispatch({ type: ActionTypes.fetchTasks });
 
       const response = await fetch("./data/mockData.json");
       const json = await response.json();
 
-      dispatch({ type: ActionTypes.fetch_tasks_success, payload: json });
+      dispatch({ type: ActionTypes.fetchTasksSuccess, payload: json });
     } catch (e) {
-      dispatch({ type: ActionTypes.fetch_tasks_error, payload: "ERROR" });
+      dispatch({ type: ActionTypes.fetchTasksError, payload: "ERROR" });
     }
   };
 };
 
 export const addTask = (task: Task) => {
   return (dispatch: Dispatch) => {
-    dispatch({ type: ActionTypes.add_task, payload: task });
+    dispatch({ type: ActionTypes.addTask, payload: task });
   };
 };
 
 export const removeTask = (id: number) => {
   return (dispatch: Dispatch) => {
-    dispatch({ type: ActionTypes.remove_task, payload: id });
+    dispatch({ type: ActionTypes.removeTask, payload: id });
   };
 };
 
 export const editTask = (task: Task) => {
   return (dispatch: Dispatch) => {
-    dispatch({ type: ActionTypes.edit_task, payload: task });
+    dispatch({ type: ActionTypes.editTask, payload: task });
   };
 };
