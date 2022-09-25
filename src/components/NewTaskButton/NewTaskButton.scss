@@ -1,0 +1,23 @@
+@import "../../styles/variables";
+
+.add-task {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: $primary;
+  background-color: $white;
+  border: none;
+  margin-top: 20px;
+  cursor: pointer;
+  font-size: 20px;
+  padding: 10px 0;
+  font-size: 20px;
+  font-weight: 700;
+  
+  &:hover {
+    background-color: $primary;
+    box-shadow: inset 0px 0px 0px 3px $white;
+    color: $white;
+  }
+}
