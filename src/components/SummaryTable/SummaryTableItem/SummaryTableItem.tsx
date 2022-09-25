@@ -23,5 +23,4 @@ const SummaryTableItem: FC<SummaryTableItemProps> = ({
   );
 };
 
-
-export default SummaryTableItem
+export default SummaryTableItem;

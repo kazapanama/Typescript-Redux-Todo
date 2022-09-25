@@ -15,12 +15,17 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
   background-color: $primary;
   width:100vw;
   padding-top: 50px;
     .App{
       margin:0 auto;
       max-width: 1200px;
+      .info-heading{
+        color: $white;
+        text-align: center;
+      }
     }
 }
 

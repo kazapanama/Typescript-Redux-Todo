@@ -7,42 +7,58 @@
   align-items: center;
   padding: 10px;
   border-bottom: 1px solid $black;
-  gap:50px;
-  
+  gap: 50px;
+
+  &:last-of-type {
+    border-bottom: none;
+    padding-bottom: 10px;
+    border-radius: 0 0 10px 10px;
+    margin-bottom: 20px;
+  }
+
   .task-name {
     width: 180px;
-    border: 1px solid $black;
-    
   }
 
-  .task-created-at{
-    border: 1px solid $black;
-    width:80px;
+  .task-created-at {
+    width: 80px;
     text-align: center;
   }
 
-  .task-category{
-    width:150px;
-    text-align: center;
-    border: 1px solid $black;
-    
-}
-
-  .task-content{
-    width:250px;
-    border: 1px solid $black;
-  }
-
-  .task-parsed-dates{
-    width:80px;
-    height: 20px;
-    border: 1px solid $black;
+  .task-category {
+    width: 150px;
     text-align: center;
   }
 
-  .buttons{
-    width:180px;
+  .task-content {
+    width: 250px;
+    word-wrap: break-word;
+  }
+
+  .task-parsed-dates {
+    width: 80px;
+
+    text-align: center;
+  }
+
+  .buttons {
+    width: 180px;
     height: 50px;
-    border: 1px solid $black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    .item-btn {
+      width: 35px;
+      height: 35px;
+      cursor: pointer;
+      padding: 5px;
+      border: 1px solid $black;
+      border-radius: 50%;
+      &:hover {
+        background-color: $white;
+        filter: invert(100%);
+      }
+    }
   }
 }

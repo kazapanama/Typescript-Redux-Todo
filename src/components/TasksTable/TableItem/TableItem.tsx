@@ -1,56 +1,60 @@
 import "./TableItem.scss";
-import { Todo } from "../../../types/todo";
-import { FC,useState } from "react";
-import { parseDates } from "../../../utils/utils";
+import { Task } from "../../../types/task";
+import { FC, useState } from "react";
+import { parseDates, formatCategory } from "../../../utils/utils";
 import { useAction } from "../../../hooks/useAction";
-import Form from '../../Form/Form'
-
+import Form from "../../Form/Form";
 
 interface TodoProps {
-  item: Todo;
+  item: Task;
 }
 
 const TableItem: FC<TodoProps> = ({ item }) => {
-  const {removeTask } = useAction();
+  const { removeTask, editTask } = useAction();
 
-  const [isOpen,setIsOpen] = useState(false)
-  // const addTest = () => {
-  //   const testTodo: Todo = {
-  //     id: 12,
-  //     name: "asda",
-  //     createdAt: "22.22.22",
-  //     content: "123hadsgaskjgdaksjd22.02.22",
-  //     category: "task",
-  //     isArchive: false,
-  //   };
-  //   addTask(testTodo);
-  // };
+  const [isOpen, setIsOpen] = useState(false);
 
+  const openModal = () => {
+    setIsOpen(true);
+    document.body.style.overflow = "hidden";
+  };
 
-
-  const removeTest = (id:number) => {
-    removeTask(id)
-  }
-
-
+  const changeStatus = (item: Task) => {
+    editTask({ ...item, isArchive: !item.isArchive });
+  };
 
   return (
     <>
-    <div className="task">
-      <div className="task-name">{item.name}</div>
-      <div className="task-created-at">{item.createdAt}</div>
-      <div className="task-category">{item.category}</div>
-      <div className="task-content">{item.content}</div>
-      <div className="task-parsed-dates">{parseDates(item.content)}</div>
-      <div className="buttons">
-        <button onClick={()=>setIsOpen(true)}>TESTERINO</button>
-        <button onClick={() => removeTest(item.id)}>UDALINO</button>
+      <div className="task">
+        <div className="task-name">{item.name}</div>
+        <div className="task-created-at">{item.createdAt}</div>
+        <div className="task-category">{formatCategory(item.category)}</div>
+        <div className="task-content">{item.content}</div>
+        <div className="task-parsed-dates">{parseDates(item.content)}</div>
+        <div className="buttons">
+          <img
+            onClick={() => openModal()}
+            className="item-btn"
+            src="./img/edit.svg"
+            alt='edit icon'
+          />
+          <img
+            onClick={() => changeStatus(item)}
+            className="item-btn"
+            src={item.isArchive ? "./img/restore.svg" : "./img/archive.svg"}
+            alt='archive icon'
+          />
+          <img
+            onClick={() => removeTask(item.id)}
+            className="item-btn"
+            src="./img/delete.svg"
+            alt='delete icon'
+          />
+        </div>
       </div>
-    </div>
-    
-    {isOpen ? <Form setIsOpen={setIsOpen} item={item} type='edit'/> : ''}
+
+      {isOpen ? <Form setIsOpen={setIsOpen} item={item} type="edit" /> : ""}
     </>
-    
   );
 };
 

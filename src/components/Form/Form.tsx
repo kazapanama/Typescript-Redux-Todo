@@ -1,88 +1,85 @@
-import { FC ,useState} from "react";
+import { FC, useState } from "react";
 import { useAction } from "../../hooks/useAction";
-import { Todo } from "../../types/todo";
+import { Task } from "../../types/task";
+import { getDate } from "../../utils/utils";
 import "./Form.scss";
 
-
-
 interface FormProps {
-    setIsOpen:React.Dispatch<React.SetStateAction<boolean>>
-    type:'edit'|'submit'
-    item?:Todo | undefined
+  setIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
+  type: "edit" | "add";
+  item?: Task | undefined;
 }
 
+const Form: FC<FormProps> = ({ setIsOpen, item, type }) => {
+  let defaultTask: Task = {
+    name: "",
+    id: Date.now(),
+    createdAt: getDate(),
+    category: "task",
+    isArchive: false,
+    content: "",
+  };
 
+  const { addTask, editTask } = useAction();
+  const [task, setTask] = useState<Task>(item || defaultTask);
 
-const Form:FC<FormProps> = ({setIsOpen,item,type}) => {
-    
-    let defaultTask:Todo = {
-        name:'',
-        id:Date.now(),
-        createdAt:'asdasd',
-        category:'asd',
-        isArchive:false,
-        content:''
+  const closeModal = () => {
+    setIsOpen(false);
+    document.body.style.overflow = "";
+  };
+
+  const submit = (e: React.SyntheticEvent) => {
+    e.preventDefault();
+
+    if (type === "add") {
+      addTask(task);
     }
 
-    const {addTask,editTask } = useAction();
-        const [task,setTask] = useState<Todo>(item || defaultTask)
-        
-    
-
-
-
-   const closeModal = () => {
-    setIsOpen(false)
-   }
-    
-    
-    const submit = (e:React.SyntheticEvent) => {
-        e.preventDefault()
-
-        if (type === 'submit'){
-            addTask(task)
-        }
-        
-        if (type === 'edit'){
-            editTask(task)
-            closeModal()
-        }
+    if (type === "edit") {
+      editTask(task);
     }
-   
-   
-   
-   return(
+    closeModal();
+  };
 
+  return (
+    <div className="form-bg" onClick={() => closeModal()}>
+      <form onSubmit={(e) => submit(e)} onClick={(e) => e.stopPropagation()}>
+        <div className="form-question">
+          <label htmlFor="name">Task:</label>
+          <input
+            value={task.name}
+            required
+            onChange={(e) => setTask({ ...task, name: e.target.value })}
+            id="name"
+          />
+        </div>
 
-<div className="form-bg">
-    <form onSubmit={(e)=>submit(e)}>
-        <button onClick={closeModal}>X</button>
-      <div className="form-question">
-        <label>Task:</label>
-        <input  value={task.name} onChange={e=>setTask({...task,name:e.target.value})}/>
-      </div>
+        <div className="form-question">
+          <label htmlFor="description">Description:</label>
+          <textarea
+            value={task.content}
+            onChange={(e) => setTask({ ...task, content: e.target.value })}
+            id="description"
+          />
+        </div>
 
-      <div className="form-question">
-        <label>Description:</label>
-        <textarea value={task.content} onChange={e=>setTask({...task,content:e.target.value})}/>
-      </div>
+        <div className="form-question">
+          <label htmlFor="category">Category:</label>
+          <select
+            onChange={(e) => setTask({ ...task, category: e.target.value })}
+            defaultValue={task.category}
+            id="category"
+          >
+            <option value="task">Task</option>
+            <option value="idea">Idea</option>
+            <option value="randomThought">Random Though</option>
+          </select>
+        </div>
 
-      <div className="form-question">
-        <label>Category:</label>
-        <select onChange={e=>setTask({...task,category:e.target.value})}>
-            <option value='task'>Task</option>
-            <option value='idea'>idea</option>
-            <option value='randomThought'>Random Though</option>
-        </select>
-
-        <label>{task.category}</label>
-      </div>
-
-      <button>Submit</button>
-    </form>
-  </div>
-    )
-  
+        <button>Submit</button>
+      </form>
+    </div>
+  );
 };
 
-export default Form
+export default Form;

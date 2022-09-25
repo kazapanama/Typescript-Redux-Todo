@@ -1,37 +1,36 @@
 import { useTypedSelector } from "../../hooks/useTypedSelector";
-import { Todo, TodoReducerState } from "../../types/todo";
+import { Task, TodoReducerState } from "../../types/task";
 import SummaryTableHeader from "./SummaryTableHeader/SummaryTableHeader";
 import SummaryTableItem from "./SummaryTableItem/SummaryTableItem";
-import { formatCategory,getSummaryIfno } from "../../utils/utils";
-
+import { formatCategory, getSummaryInfo } from "../../utils/utils";
 
 const SummaryTable = () => {
-  const todos = useTypedSelector((state: TodoReducerState) => state.todos);
+  const tasks = useTypedSelector((state: TodoReducerState) => state.tasks);
 
- const render = (todos:Todo[]) => {
-   let tree = getSummaryIfno(todos)
-    let result = []
-    
+  const render = (tasks: Task[]) => {
+    let tree = getSummaryInfo(tasks);
+    let result = [];
 
-    for (let key in tree){
-        result.push(<SummaryTableItem category={formatCategory(key)} active={tree[key]['active']} archive={tree[key]['archive']} />)
+    for (let key in tree) {
+      result.push(
+        <SummaryTableItem
+          category={formatCategory(key)}
+          active={tree[key]["active"]}
+          archive={tree[key]["archive"]}
+          key={key}
+        />
+      );
     }
 
-    return result
- }
-
- 
-
-
+    return result;
+  };
 
   return (
     <>
-        <SummaryTableHeader title="Summary" />
-        {render(todos)}
-        
+      <SummaryTableHeader title="Summary" />
+      {render(tasks)}
     </>
-        
-  )
-}
+  );
+};
 
 export default SummaryTable;
