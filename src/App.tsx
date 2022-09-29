@@ -20,16 +20,16 @@ function App() {
 
   if (store.error) {
     return (
-      <div className="App">
-        <h1 className="info-heading">There was an error</h1>
+      <div className="w-screen flex justify-center items-center h-screen">
+        <h1 className="text-4xl text-white font-bold">There was an error</h1>
       </div>
     );
   }
 
   if (store.loading) {
     return (
-      <div className="App">
-        <h1 className="info-heading">LOADING</h1>
+      <div className="w-screen flex justify-center items-center h-screen">
+        <h1 className="text-4xl text-white font-bold">LOADING</h1>
       </div>
     );
   }

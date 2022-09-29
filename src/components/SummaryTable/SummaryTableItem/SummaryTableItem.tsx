@@ -1,5 +1,5 @@
 import { FC } from "react";
-import "./SummaryTableItem.scss";
+
 
 interface SummaryTableItemProps {
   category: string;
@@ -13,10 +13,10 @@ const SummaryTableItem: FC<SummaryTableItemProps> = ({
   archive,
 }) => {
   return (
-    <div className="summary-item">
-      <span>{category}</span>
-      <div>
-        <span>{active}</span>
+    <div className="flex justify-between p-5 bg-white last-of-type:rounded-b-xl border-b-2 last-of-type:mb-5 last-of-type:shadow-lg">
+      <span className="font-bold">{category}</span>
+      <div className="flex gap-20 mr-6">
+        <span className="mr-2">{active}</span>
         <span>{archive}</span>
       </div>
     </div>

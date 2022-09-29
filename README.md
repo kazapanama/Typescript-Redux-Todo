@@ -1,4 +1,4 @@
 # Typescript-Redux-Todo
 
-Current version can be viewed [here](https://typescript-redux-todo43.netlify.app/)
+Current version can be viewed [here](https://lighthearted-manatee-646e22.netlify.app/)
 
