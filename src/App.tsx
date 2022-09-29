@@ -36,7 +36,7 @@ function App() {
 
   return (
     <>
-      <div className="App">
+      <div className="max-w-[1200px] m-auto">
         <TodoTable title="Active tasks" type="active" />
         <NewTaskButton />
         <SummaryTable />

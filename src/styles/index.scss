@@ -1,9 +1,12 @@
 @import './variables';
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 *{
   margin:0;
   padding: 0;
-  box-sizing: border-box;
+
 }
 
 
@@ -19,13 +22,13 @@ body {
   background-color: $primary;
   width:100vw;
   padding-top: 50px;
-    .App{
-      margin:0 auto;
-      max-width: 1200px;
-      .info-heading{
-        color: $white;
-        text-align: center;
-      }
-    }
+    // .App{
+    //   margin:0 auto;
+    //   max-width: 1200px;
+    //   .info-heading{
+    //     color: $white;
+    //     text-align: center;
+    //   }
+    // }
 }
 
