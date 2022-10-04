@@ -1,37 +1,27 @@
-import React from 'react';
-import { ComponentStory, ComponentMeta } from '@storybook/react';
-import  TableItem  from './TableItem';
-import { Provider } from 'react-redux';
-import { store } from '../../../store';
-
+import React from "react";
+import { ComponentStory, ComponentMeta } from "@storybook/react";
+import TableItem from "./TableItem";
 
 export default {
-  title: 'Tasks table/TableItem',
+  title: "Tasks table/Table Item",
   component: TableItem,
-  decorators: [
-    (Story) => (
-      <Provider store={store}>
-        <Story />
-      </Provider>
-    ),
-  ],
-
 } as ComponentMeta<typeof TableItem>;
 
+const mockItem = {
+  id: 1,
+  name: "CreateToDOs",
+  createdAt: "13.09.2022",
+  category: "task",
+  isArchive: false,
+  content:
+    "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy",
+};
+const Template: ComponentStory<typeof TableItem> = (args) => (
+  <TableItem {...args} />
+);
 
-const Template: ComponentStory<typeof TableItem> = (args) => <TableItem {...args} />;
+export const Single = Template.bind({});
 
-export const Primary = Template.bind({});
-
-Primary.args = {
- item:{
-  id:1, 
-  name:"CreateToDOs",
-  createdAt:"13.09.2022",
-  category:"task",
-  isArchive:false, 
-  content:"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy"
- }
-  
-
+Single.args = {
+  item: mockItem,
 };

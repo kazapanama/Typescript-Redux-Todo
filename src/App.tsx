@@ -38,7 +38,7 @@ function App() {
     <>
       <div className="max-w-[1200px] m-auto">
         <TodoTable title="Active tasks" type="active" />
-        <NewTaskButton />
+        <NewTaskButton text="+ Add new Task"/>
         <SummaryTable />
         <TodoTable title="Archived tasks" type="archive" />
       </div>
